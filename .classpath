@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="N:/IDE/Projects/Game-Engine-Java/lib/jinput-2.0.5.jar"/>
+	<classpathentry kind="lib" path="N:/IDE/Projects/Game-Engine-Java/lib/lwjgl-2.9.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="N:/IDE/Projects/Game-Engine-Java/lib/natives/windows"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="N:/IDE/Projects/Game-Engine-Java/lib/slick-util.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
