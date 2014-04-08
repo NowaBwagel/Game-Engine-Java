@@ -1,54 +1,47 @@
 package com.base.engine.core;
 
-import com.base.engine.components.GameComponent;
 import com.base.engine.rendering.RenderingEngine;
 import com.base.engine.rendering.Window;
 
-public class CoreEngine
-{
+public class CoreEngine {
 	private boolean isRunning;
 	private Game game;
 	private RenderingEngine renderingEngine;
 	private int width;
 	private int height;
 	private double frameTime;
-	
-	public CoreEngine(int width, int height, double framerate, Game game)
-	{
+
+	public CoreEngine(int width, int height, double framerate, Game game) {
 		this.isRunning = false;
 		this.game = game;
 		this.width = width;
 		this.height = height;
-		this.frameTime = 1.0/framerate;
+		this.frameTime = 1.0 / framerate;
 		game.setEngine(this);
 	}
 
-	public void createWindow(String title)
-	{
+	public void createWindow(String title) {
 		Window.createWindow(width, height, title);
 		this.renderingEngine = new RenderingEngine();
 	}
 
-	public void start()
-	{
-		if(isRunning)
+	public void start() {
+		if (isRunning)
 			return;
-		
+
 		run();
 	}
-	
-	public void stop()
-	{
-		if(!isRunning)
+
+	public void stop() {
+		if (!isRunning)
 			return;
-		
+
 		isRunning = false;
 	}
-	
-	private void run()
-	{
+
+	private void run() {
 		isRunning = true;
-		
+
 		int frames = 0;
 		long frameCounter = 0;
 
@@ -56,63 +49,53 @@ public class CoreEngine
 
 		double lastTime = Time.getTime();
 		double unprocessedTime = 0;
-		
-		while(isRunning)
-		{
+
+		while (isRunning) {
 			boolean render = false;
 
 			double startTime = Time.getTime();
 			double passedTime = startTime - lastTime;
 			lastTime = startTime;
-			
+
 			unprocessedTime += passedTime;
 			frameCounter += passedTime;
-			
-			while(unprocessedTime > frameTime)
-			{
+
+			while (unprocessedTime > frameTime) {
 				render = true;
-				
+
 				unprocessedTime -= frameTime;
-				
-				if(Window.isCloseRequested())
+
+				if (Window.isCloseRequested())
 					stop();
 
-				game.input((float)frameTime);
+				game.input((float) frameTime);
 				Input.update();
-				
-				game.update((float)frameTime);
-				
-				if(frameCounter >= 1.0)
-				{
+
+				game.update((float) frameTime);
+
+				if (frameCounter >= 1.0) {
 					System.out.println(frames);
 					frames = 0;
 					frameCounter = 0;
 				}
 			}
-			if(render)
-			{
+			if (render) {
 				game.render(renderingEngine);
 				Window.render();
 				frames++;
-			}
-			else
-			{
-				try
-				{
+			} else {
+				try {
 					Thread.sleep(1);
-				}
-				catch (InterruptedException e)
-				{
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
-		
+
 		cleanUp();
 	}
 
-	private void cleanUp()
-	{
+	private void cleanUp() {
 		Window.dispose();
 	}
 
