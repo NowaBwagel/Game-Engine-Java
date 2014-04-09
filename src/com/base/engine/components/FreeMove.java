@@ -39,9 +39,9 @@ public class FreeMove extends GameComponent {
 		if (Input.getKey(rightKey))
 			move(getTransform().getRot().getRight(), movAmt);
 		if (Input.getKey(upKey))
-			move(getTransform().getRot().getUp(), movAmt / 2);
+			move(getTransform().getRot().getUp(), movAmt);
 		if (Input.getKey(downKey))
-			move(getTransform().getRot().getDown(), movAmt / 2);
+			move(getTransform().getRot().getDown(), movAmt);
 	}
 
 	private void move(Vector3f dir, float amt) {
