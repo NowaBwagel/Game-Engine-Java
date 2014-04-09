@@ -6,6 +6,7 @@ import com.base.engine.components.PointLight;
 import com.base.engine.components.SpotLight;
 import com.base.engine.core.*;
 import com.base.engine.rendering.resourceManagement.ShaderResource;
+
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL32.*;
 
@@ -19,6 +20,7 @@ public class Shader
 	private static HashMap<String, ShaderResource> loadedShaders = new HashMap<String, ShaderResource>();
 
 	private ShaderResource resource;
+	@SuppressWarnings("unused")
 	private String fileName;
 
 	public Shader(String fileName)
@@ -274,6 +276,7 @@ public class Shader
 		addProgram(text, GL_VERTEX_SHADER);
 	}
 
+	@SuppressWarnings("unused")
 	private void addGeometryShader(String text)
 	{
 		addProgram(text, GL_GEOMETRY_SHADER);

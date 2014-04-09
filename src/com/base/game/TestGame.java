@@ -30,12 +30,14 @@ public class TestGame extends Game
 		Mesh mesh2 = new Mesh(vertices2, indices2, true);
 
 		Mesh mesh = new Mesh(vertices, indices, true);
-		Material material = new Material();//new Texture("test.png"), new Vector3f(1,1,1), 1, 8);
+		Material material = new Material();// new Texture("test.png"), new
+											// Vector3f(1,1,1), 1, 8);
 		material.addTexture("diffuse", new Texture("bricks.jpg"));
 		material.addFloat("specularIntensity", 1);
 		material.addFloat("specularPower", 8);
 
-		Material material2 = new Material();//new Texture("test.png"), new Vector3f(1,1,1), 1, 8);
+		Material material2 = new Material();// new Texture("test.png"), new
+											// Vector3f(1,1,1), 1, 8);
 		material2.addTexture("diffuse", new Texture("test.png"));
 		material2.addFloat("specularIntensity", 1);
 		material2.addFloat("specularPower", 8);
@@ -49,48 +51,50 @@ public class TestGame extends Game
 		planeObject.getTransform().getPos().set(0, -1, 5);
 
 		GameObject directionalLightObject = new GameObject();
-		DirectionalLight directionalLight = new DirectionalLight(new Vector3f(0,0,1), 0.4f);
+		DirectionalLight directionalLight = new DirectionalLight(new Vector3f(0.82f, 0.91f, 0.51f), 0.4f);
 
 		directionalLightObject.addComponent(directionalLight);
 
 		GameObject pointLightObject = new GameObject();
-		pointLightObject.addComponent(new PointLight(new Vector3f(0,1,0), 0.4f, new Attenuation(0,0,1)));
+		pointLightObject.addComponent(new PointLight(new Vector3f(0, 1, 0), 0.4f, new Attenuation(0, 0, 1)));
 
-		SpotLight spotLight = new SpotLight(new Vector3f(0,1,1), 0.4f,
-				new Attenuation(0,0,0.1f), 0.7f);
+		SpotLight spotLight = new SpotLight(new Vector3f(0, 1, 1), 0.4f, new Attenuation(0, 0, 0.1f), 0.7f);
 
 		GameObject spotLightObject = new GameObject();
 		spotLightObject.addComponent(spotLight);
 
 		spotLightObject.getTransform().getPos().set(5, 0, 5);
-		spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), (float)Math.toRadians(90.0f)));
+		spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(90.0f)));
 
 		addObject(planeObject);
 		addObject(directionalLightObject);
 		addObject(pointLightObject);
 		addObject(spotLightObject);
 
-		//getRootObject().addChild(new GameObject().addComponent(new Camera((float)Math.toRadians(70.0f), (float)Window.getWidth()/(float)Window.getHeight(), 0.01f, 1000.0f)));
+		// getRootObject().addChild(new GameObject().addComponent(new
+		// Camera((float)Math.toRadians(70.0f),
+		// (float)Window.getWidth()/(float)Window.getHeight(), 0.01f,
+		// 1000.0f)));
 
 		GameObject testMesh1 = new GameObject().addComponent(new MeshRenderer(mesh2, material));
 		GameObject testMesh2 = new GameObject().addComponent(new MeshRenderer(mesh2, material));
 		GameObject testMesh3 = new GameObject().addComponent(new LookAtComponent()).addComponent(new MeshRenderer(tempMesh, material));
 
 		testMesh1.getTransform().getPos().set(0, 2, 0);
-		testMesh1.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), 0.4f));
+		testMesh1.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), 0.4f));
 
 		testMesh2.getTransform().getPos().set(0, 0, 5);
 
 		testMesh1.addChild(testMesh2);
 		testMesh2.addChild(
-				//addObject(
-				new GameObject().addComponent(new FreeLook(0.5f)).addComponent(new FreeMove(10.0f)).addComponent(new Camera((float) Math.toRadians(70.0f), (float) Window.getWidth() / (float) Window.getHeight(), 0.01f, 1000.0f)));
+		// addObject(
+		new GameObject().addComponent(new FreeLook(0.5f)).addComponent(new FreeMove(10.0f)).addComponent(new Camera((float) Math.toRadians(70.0f), (float) Window.getWidth() / (float) Window.getHeight(), 0.01f, 1000.0f)));
 
 		addObject(testMesh1);
 		addObject(testMesh3);
 
-		testMesh3.getTransform().getPos().set(5,5,5);
-		testMesh3.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), (float)Math.toRadians(-70.0f)));
+		testMesh3.getTransform().getPos().set(5, 5, 5);
+		testMesh3.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(-70.0f)));
 
 		addObject(new GameObject().addComponent(new MeshRenderer(new Mesh("monkey3.obj"), material2)));
 
