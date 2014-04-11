@@ -17,7 +17,7 @@ public class TestGame extends Game {
 
 		int indices2[] = { 0, 1, 2, 2, 1, 3 };
 
-		Mesh mesh2 = new Mesh(vertices2, indices2, true);
+		//Mesh mesh2 = new Mesh(vertices2, indices2, true);
 
 		Mesh mesh = new Mesh(vertices, indices, true);
 		Material material = new Material();// new Texture("test.png"), new

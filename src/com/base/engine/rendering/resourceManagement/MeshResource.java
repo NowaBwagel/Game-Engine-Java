@@ -2,15 +2,13 @@ package com.base.engine.rendering.resourceManagement;
 
 import static org.lwjgl.opengl.GL15.*;
 
-public class MeshResource
-{
+public class MeshResource {
 	private int vbo;
 	private int ibo;
 	private int size;
 	private int refCount;
 
-	public MeshResource(int size)
-	{
+	public MeshResource(int size) {
 		vbo = glGenBuffers();
 		ibo = glGenBuffers();
 		this.size = size;
@@ -18,19 +16,16 @@ public class MeshResource
 	}
 
 	@Override
-	protected void finalize()
-	{
+	protected void finalize() {
 		glDeleteBuffers(vbo);
 		glDeleteBuffers(ibo);
 	}
 
-	public void addReference()
-	{
+	public void addReference() {
 		refCount++;
 	}
 
-	public boolean removeReference()
-	{
+	public boolean removeReference() {
 		refCount--;
 		return refCount == 0;
 	}
