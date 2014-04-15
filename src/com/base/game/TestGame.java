@@ -46,16 +46,16 @@ public class TestGame extends Game {
 
 	directionalLightObject.addComponent(directionalLight);
 
-	GameObject pointLightObject = new GameObject();
-	pointLightObject.addComponent(new PointLight(new Vector3f(0, 1, 0), 0.4f, new Attenuation(0, 0, 1)));
+	//GameObject pointLightObject = new GameObject();
+	//pointLightObject.addComponent(new PointLight(new Vector3f(0, 1, 0), 0.4f, new Attenuation(0, 0, 1)));
 
-	SpotLight spotLight = new SpotLight(new Vector3f(0, 1, 1), 0.4f, new Attenuation(0, 0, 0.1f), 0.7f);
+	//SpotLight spotLight = new SpotLight(new Vector3f(0, 1, 1), 0.4f, new Attenuation(0, 0, 0.1f), 0.7f);
 
-	GameObject spotLightObject = new GameObject();
-	spotLightObject.addComponent(spotLight);
+	//GameObject spotLightObject = new GameObject();
+	//spotLightObject.addComponent(spotLight);
 
-	spotLightObject.getTransform().getPos().set(5, 0, 5);
-	spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(90.0f)));
+	//spotLightObject.getTransform().getPos().set(5, 0, 5);
+	//spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(90.0f)));
 
 	addObject(planeObject);
 	addObject(directionalLightObject);
